@@ -10,19 +10,19 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 
-public class ExcelOutputFile implements OutputFile {
+public class ExcelDataOutput implements DataOutput {
 
     final private DataResult dataResult;
     final private String fileName;
+    private String outputPath = null;
 
-
-    public ExcelOutputFile(DataResult dataResult, String fileName) {
+    public ExcelDataOutput(DataResult dataResult, String fileName) {
         this.dataResult = dataResult;
         this.fileName = fileName;
     }
 
     @Override
-    public void write() throws OutputException {
+    public void execute() throws DataOutputException {
         final ArrayList<String> fieldsNames = dataResult.getFieldNames();
         final ArrayList<ArrayList<Object>> records = dataResult.getRecords();
 
@@ -50,11 +50,12 @@ public class ExcelOutputFile implements OutputFile {
 
         try {
             //Write the workbook in file system
-            FileOutputStream out = new FileOutputStream(new File("" + fileName + ".xlsx"));
+            outputPath = "" + fileName + ".xlsx";
+            FileOutputStream out = new FileOutputStream(new File(outputPath));
             workbook.write(out);
             out.close();
         } catch (Exception e) {
-            throw new OutputException(e, e.getMessage());
+            throw new DataOutputException(e, e.getMessage());
         }
 
 
