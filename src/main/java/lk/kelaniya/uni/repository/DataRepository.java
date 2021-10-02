@@ -4,5 +4,5 @@ public interface DataRepository {
 
     void connect() throws DataRepositoryException;
 
-    Result executeQuery(String query) throws DataRepositoryException;
+    DataResult executeQuery(String query) throws DataRepositoryException;
 }

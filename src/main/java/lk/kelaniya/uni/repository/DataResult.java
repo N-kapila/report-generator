@@ -2,7 +2,7 @@ package lk.kelaniya.uni.repository;
 
 import java.util.ArrayList;
 
-public class Result {
+public class DataResult {
 
     private ArrayList<String> fieldNames = new ArrayList<String>();
     private ArrayList<ArrayList<Object>> records = new ArrayList<>();

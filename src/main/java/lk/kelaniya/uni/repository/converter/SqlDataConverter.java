@@ -1,7 +1,6 @@
 package lk.kelaniya.uni.repository.converter;
 
-import lk.kelaniya.uni.repository.DataRepositoryException;
-import lk.kelaniya.uni.repository.Result;
+import lk.kelaniya.uni.repository.DataResult;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -10,8 +9,8 @@ import java.util.ArrayList;
 
 public class SqlDataConverter implements DataConverter {
 
-    public Result convert(ResultSet sqlResultSet) throws SQLException {
-        Result result = new Result();
+    public DataResult convert(ResultSet sqlResultSet) throws SQLException {
+        DataResult result = new DataResult();
 
 
         ResultSetMetaData md = sqlResultSet.getMetaData();
