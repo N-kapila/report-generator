@@ -14,7 +14,7 @@ public class ExcelDataOutput implements DataOutput {
 
     final private DataResult dataResult;
     final private String fileName;
-    private String outputPath = null;
+    protected String outputPath = null;
 
     public ExcelDataOutput(DataResult dataResult, String fileName) {
         this.dataResult = dataResult;
