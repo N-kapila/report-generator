@@ -1,5 +1,8 @@
 package lk.kelaniya.uni.repository;
 
+import lk.kelaniya.uni.repository.converter.DataConverter;
+import lk.kelaniya.uni.repository.converter.SqlDataConverter;
+
 import java.sql.*;
 
 public class SqlDataRepository implements DataRepository {
@@ -21,12 +24,14 @@ public class SqlDataRepository implements DataRepository {
     }
 
     @Override
-    public void executeQuery(String query) throws DataRepositoryException {
+    public Result executeQuery(String query) throws DataRepositoryException {
         try {
 
             statement = conn.createStatement();
             resultSet = statement.executeQuery(query);
-            // Now do something with the ResultSet ....
+            SqlDataConverter dataConverter = new SqlDataConverter();
+            return dataConverter.convert(resultSet);
+
         } catch (SQLException e) {
 
             throw new DataRepositoryException(e, e.getMessage());
