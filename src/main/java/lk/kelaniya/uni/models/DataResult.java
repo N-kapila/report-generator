@@ -1,9 +1,8 @@
-package lk.kelaniya.uni.repository;
+package lk.kelaniya.uni.models;
 
 import java.util.ArrayList;
 
 public class DataResult {
-
     private ArrayList<String> fieldNames = new ArrayList<String>();
     private ArrayList<ArrayList<Object>> records = new ArrayList<>();
 

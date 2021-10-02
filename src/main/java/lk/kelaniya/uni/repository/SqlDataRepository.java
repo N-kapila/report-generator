@@ -1,6 +1,7 @@
 package lk.kelaniya.uni.repository;
 
-import lk.kelaniya.uni.repository.converter.SqlDataConverter;
+import lk.kelaniya.uni.converter.SqlDataConverter;
+import lk.kelaniya.uni.models.DataResult;
 
 import java.sql.*;
 
@@ -25,8 +26,39 @@ public class SqlDataRepository implements DataRepository {
     @Override
     public DataResult executeQuery(String query) throws DataRepositoryException {
 
+        try {
 
-        return null;
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(query);
+            SqlDataConverter dataConverter = new SqlDataConverter();
+            return dataConverter.convert(resultSet);
+
+        } catch (SQLException e) {
+
+            throw new DataRepositoryException(e, e.getMessage());
+
+        } finally {
+
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    throw new DataRepositoryException(e, e.getMessage());
+                }
+
+                resultSet = null;
+            }
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    throw new DataRepositoryException(e, e.getMessage());
+                }
+
+                statement = null;
+            }
+        }
 
     }
 }
