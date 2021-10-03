@@ -19,7 +19,7 @@ public class SqlDataRepository implements DataRepository {
                             "user=root&password=");
 
         } catch (SQLException e) {
-            throw new DataRepositoryException(e, e.getMessage());
+            throw new DataRepositoryException(e, "Database connection failed, Check database name,password and host");
         }
     }
 
@@ -35,7 +35,7 @@ public class SqlDataRepository implements DataRepository {
 
         } catch (SQLException e) {
 
-            throw new DataRepositoryException(e, e.getMessage());
+            throw new DataRepositoryException(e, "Database error.");
 
         } finally {
 
