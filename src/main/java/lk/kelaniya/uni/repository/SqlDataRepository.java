@@ -1,7 +1,7 @@
 package lk.kelaniya.uni.repository;
 
 import lk.kelaniya.uni.converter.SqlDataConverter;
-import lk.kelaniya.uni.models.DataResult;
+import lk.kelaniya.uni.output.DataResult;
 
 import java.sql.*;
 

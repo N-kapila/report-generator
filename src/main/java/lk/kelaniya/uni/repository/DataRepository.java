@@ -1,6 +1,6 @@
 package lk.kelaniya.uni.repository;
 
-import lk.kelaniya.uni.models.DataResult;
+import lk.kelaniya.uni.output.DataResult;
 
 public interface DataRepository {
 

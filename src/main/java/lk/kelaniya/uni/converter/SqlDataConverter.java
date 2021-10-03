@@ -1,6 +1,6 @@
 package lk.kelaniya.uni.converter;
 
-import lk.kelaniya.uni.models.DataResult;
+import lk.kelaniya.uni.output.DataResult;
 
 import java.sql.*;
 import java.util.ArrayList;

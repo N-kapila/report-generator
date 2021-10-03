@@ -1,4 +1,4 @@
-package lk.kelaniya.uni.models;
+package lk.kelaniya.uni.output;
 
 import java.util.ArrayList;
 
