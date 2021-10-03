@@ -30,7 +30,7 @@ public class JsonFileInputs implements Inputs {
             jsonFileInputData.setGetDatabasePassword((String) db.get("password"));
 
             // email config
-            JSONObject email = (JSONObject) json.get("database");
+            JSONObject email = (JSONObject) json.get("email");
             jsonFileInputData.setSenderEmail((String)email.get("sender-mail") );
             jsonFileInputData.setSenderName((String)email.get("sender-name") );
             jsonFileInputData.setSmtpHost((String)email.get("smtp-host") );
