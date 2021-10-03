@@ -4,13 +4,13 @@ import lk.kelaniya.uni.output.DataResult;
 import lk.kelaniya.uni.repository.DataRepository;
 import lk.kelaniya.uni.repository.DataRepositoryException;
 
-public class DayWiseOrderReport implements DataReport {
+public class DayWiseSalesReport implements DataReport {
     final private DataRepository dataRepository;
 
     final private String startDate;
     final private String endDate;
 
-    public DayWiseOrderReport(DataRepository dataRepository, String startDate, String endDate) {
+    public DayWiseSalesReport(DataRepository dataRepository, String startDate, String endDate) {
         this.dataRepository = dataRepository;
         this.startDate = startDate;
         this.endDate = endDate;
