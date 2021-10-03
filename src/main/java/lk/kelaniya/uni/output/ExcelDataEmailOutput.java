@@ -15,8 +15,8 @@ import java.util.Properties;
 public class ExcelDataEmailOutput extends ExcelDataOutput {
     final String recipientEmail;
 
-    public ExcelDataEmailOutput(DataResult dataResult, String fileName, String recipientEmail) {
-        super(dataResult, fileName);
+    public ExcelDataEmailOutput(DataResult dataResult, String recipientEmail) {
+        super(dataResult);
         this.recipientEmail = recipientEmail;
     }
 
