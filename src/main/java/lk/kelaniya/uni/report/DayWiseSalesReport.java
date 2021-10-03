@@ -24,10 +24,13 @@ public class DayWiseSalesReport implements DataReport {
                 "SUM(`quantityOrdered`*`priceEach`) AS 'Income'" +
                 "FROM `orderdetails`" +
                 "INNER JOIN `orders` ON `orders`.`orderNumber`= `orderdetails`.`orderNumber`" +
-                "WHERE `orderDate` BETWEEN '" + startDate + "' AND '" + endDate + "'"+
+                "WHERE `orderDate` BETWEEN '" + startDate + "' AND '" + endDate + "'" +
                 "GROUP BY DAY(`orderDate`)";
+
         DataResult result = dataRepository.executeQuery(query);
-        result.setName("Day wise report");
+
+        result.setName("day-wise-report-from-" + startDate + "-to-" + endDate);
+
         return result;
     }
 }
