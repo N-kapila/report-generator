@@ -5,9 +5,6 @@ import lk.kelaniya.uni.UI.UI;
 import lk.kelaniya.uni.inputs.*;
 import lk.kelaniya.uni.output.DataOutputFactory;
 import lk.kelaniya.uni.report.DataReportFactory;
-import lk.kelaniya.uni.repository.DataRepository;
-import lk.kelaniya.uni.repository.DataRepositoryException;
-import lk.kelaniya.uni.repository.SqlDataRepository;
 
 public class Main {
 
