@@ -1,22 +1,31 @@
 package lk.kelaniya.uni.repository;
 
 import lk.kelaniya.uni.converter.SqlDataConverter;
+import lk.kelaniya.uni.inputs.JsonFileInputData;
 import lk.kelaniya.uni.output.DataResult;
 
 import java.sql.*;
 
 public class SqlDataRepository implements DataRepository {
 
+    final private JsonFileInputData jsonFileInputData;
     private Connection conn = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
 
+    public SqlDataRepository(JsonFileInputData jsonFileInputData) {
+        this.jsonFileInputData = jsonFileInputData;
+    }
+
+
     @Override
     public void connect() throws DataRepositoryException {
         try {
+            String url = "jdbc:mysql://" + jsonFileInputData.getDatabaseHost() +
+                    "/" + jsonFileInputData.getDatabaseName() + "?user="
+                    + jsonFileInputData.getDatabaseUserName() + "&password=" + jsonFileInputData.getGetDatabasePassword();
             conn =
-                    DriverManager.getConnection("jdbc:mysql://localhost/classicmodels?" +
-                            "user=root&password=");
+                    DriverManager.getConnection(url);
 
         } catch (SQLException e) {
             throw new DataRepositoryException(e, "Database connection failed, Check database name,password and host");

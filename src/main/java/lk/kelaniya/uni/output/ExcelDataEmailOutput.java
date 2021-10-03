@@ -1,5 +1,6 @@
 package lk.kelaniya.uni.output;
 
+import lk.kelaniya.uni.inputs.JsonFileInputData;
 import lk.kelaniya.uni.repository.DataResult;
 
 import javax.activation.DataHandler;
@@ -14,22 +15,21 @@ import java.util.Properties;
 
 public class ExcelDataEmailOutput extends ExcelDataOutput {
     final String recipientEmail;
+    final JsonFileInputData jsonFileInputData;
 
-    public ExcelDataEmailOutput(DataResult dataResult, String fileName, String recipientEmail) {
-        super(dataResult, fileName);
+    public ExcelDataEmailOutput(DataResult dataResult, JsonFileInputData jsonFileInputData, String recipientEmail) {
+        super(dataResult);
         this.recipientEmail = recipientEmail;
+        this.jsonFileInputData = jsonFileInputData;
     }
 
     @Override
     public void execute() throws DataOutputException {
         super.execute();
 
-        final String user = "bookberriesbookberries@gmail.com";
-        final String password = "Debuggers";
-
         Properties prop = new Properties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.host", jsonFileInputData.getSmtpHost());
+        prop.put("mail.smtp.port", jsonFileInputData.getSmtpPort());
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true");
 
@@ -37,18 +37,20 @@ public class ExcelDataEmailOutput extends ExcelDataOutput {
         Session session = Session.getDefaultInstance(prop,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(user, password);
+                        return new PasswordAuthentication(
+                                jsonFileInputData.getSmtpUserName(), jsonFileInputData.getSmtpPassword()
+                        );
                     }
                 });
 
         try {
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(user));
+            message.setFrom(new InternetAddress(jsonFileInputData.getSenderEmail()));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
-            message.setSubject("Message Aleart");
+            message.setSubject("Report");
 
             BodyPart messageBodyPart1 = new MimeBodyPart();
-            messageBodyPart1.setText("This is message body");
+            messageBodyPart1.setText("Report file attached!");
 
             MimeBodyPart messageBodyPart2 = new MimeBodyPart();
 

@@ -13,12 +13,10 @@ import java.util.ArrayList;
 public class ExcelDataOutput implements DataOutput {
 
     final private DataResult dataResult;
-    final private String fileName;
     protected String outputPath = null;
 
-    public ExcelDataOutput(DataResult dataResult, String fileName) {
+    public ExcelDataOutput(DataResult dataResult) {
         this.dataResult = dataResult;
-        this.fileName = fileName;
     }
 
     @Override
@@ -50,7 +48,7 @@ public class ExcelDataOutput implements DataOutput {
 
         try {
             //Write the workbook in file system
-            outputPath = "" + fileName + ".xlsx";
+            outputPath = "" + dataResult.getName() + ".xlsx";
             FileOutputStream out = new FileOutputStream(new File(outputPath));
             workbook.write(out);
             out.close();

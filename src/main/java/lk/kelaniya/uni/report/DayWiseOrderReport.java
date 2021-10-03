@@ -26,7 +26,8 @@ public class DayWiseOrderReport implements DataReport {
                 "INNER JOIN `orders` ON `orders`.`orderNumber`= `orderdetails`.`orderNumber`" +
                 "WHERE `orderDate` BETWEEN '" + startDate + "' AND '" + endDate + "'"+
                 "GROUP BY DAY(`orderDate`)";
-
-        return dataRepository.executeQuery(query);
+        DataResult result = dataRepository.executeQuery(query);
+        result.setName("Day wise report");
+        return result;
     }
 }
