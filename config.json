@@ -6,11 +6,11 @@
     "database-name": "classicmodels"
   },
   "email": {
-    "sender-mail": "bookberriesbookberries@gmail.com",
-    "sender-name": "BOOK BERRIES",
+    "sender-mail": "",
+    "sender-name": "",
     "smtp-host": "smtp.gmail.com",
     "smtp-port": "587",
-    "smtp-username": "bookberriesbookberries@gmail.com",
-    "smtp-password": "Debuggers"
+    "smtp-username": "",
+    "smtp-password": ""
   }
 }
